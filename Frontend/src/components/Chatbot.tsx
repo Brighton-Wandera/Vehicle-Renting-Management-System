@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Mic, MicOff } from 'lucide-react';
+import { X, Send, Mic, MicOff, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -208,8 +208,9 @@ const Chatbot: React.FC = () => {
                         {/* Header */}
                         <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                    <MessageCircle className="w-5 h-5" />
+                                <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
+                                    <MessageSquare className="w-5 h-5 text-black" fill="black" />
+                                    <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                                 </div>
                                 <div>
                                     <h3 className="font-semibold">VeloRent Assistant</h3>
@@ -304,9 +305,16 @@ const Chatbot: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-16 h-16 rounded-full bg-primary text-primary-foreground shadow-2xl flex items-center justify-center hover:bg-primary/90 transition-colors"
+                className="relative w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-2xl flex items-center justify-center hover:shadow-yellow-500/50 hover:shadow-xl transition-all"
             >
-                {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+                {isOpen ? (
+                    <X className="w-7 h-7 text-black" />
+                ) : (
+                    <>
+                        <MessageSquare className="w-8 h-8 text-black" fill="black" />
+                        <div className="absolute top-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
+                    </>
+                )}
             </motion.button>
         </div>
     );

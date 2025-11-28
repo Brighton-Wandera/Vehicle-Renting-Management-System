@@ -7,7 +7,7 @@ export const registerUserSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
   contact_phone: z.string().min(10, "Phone number is required"),
   address: z.string().optional(),
-  role: z.enum(['user', 'admin']).optional(), // Default is user
+  role: z.enum(['user', 'admin']).optional(),
 });
 
 export const loginUserSchema = z.object({
@@ -21,4 +21,27 @@ export const updateUserSchema = z.object({
   email: z.string().email().optional(),
   contact_phone: z.string().optional(),
   address: z.string().optional(),
+});
+
+export const verifyEmailSchema = z.object({
+  email: z.string().email(),
+  otpCode: z.string().min(4, "OTP code is required"),
+});
+
+export const resendOtpSchema = z.object({
+  email: z.string().email(),
+});
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().email(),
+});
+
+export const resetPasswordSchema = z.object({
+  email: z.string().email(),
+  otpCode: z.string().min(4, "OTP code is required"),
+  newPassword: z.string().min(6, "Password must be at least 6 characters"),
+  confirmPassword: z.string().min(6, "Password must be at least 6 characters"),
+}).refine((data: any) => data.newPassword === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
 });

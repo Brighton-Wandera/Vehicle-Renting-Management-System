@@ -70,6 +70,12 @@ export const useAuthStore = create<AuthState>()(
                         });
 
                         toast.success('Welcome back!');
+
+                        // Redirect to home page as requested
+                        setTimeout(() => {
+                            window.location.href = '/';
+                        }, 500);
+
                         return true;
                     }
 

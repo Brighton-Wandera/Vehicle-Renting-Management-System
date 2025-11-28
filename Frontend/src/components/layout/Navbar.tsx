@@ -93,12 +93,12 @@ const Navbar: React.FC = () => {
                                             className="absolute right-0 mt-2 w-56 bg-card rounded-xl shadow-xl border border-border overflow-hidden p-1"
                                         >
                                             <Link
-                                                to="/dashboard"
+                                                to={user?.role === 'admin' ? '/admin/dashboard' : '/dashboard'}
                                                 className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-accent transition-colors text-sm"
                                                 onClick={() => setUserMenuOpen(false)}
                                             >
                                                 <LayoutDashboard className="w-4 h-4" />
-                                                <span>Dashboard</span>
+                                                <span>{user?.role === 'admin' ? 'Admin Dashboard' : 'Dashboard'}</span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/profile"

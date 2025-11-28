@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'; // Removed useLocation
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authStore';
@@ -13,9 +13,12 @@ import Register from './pages/Auth/Register';
 import VerifyEmail from './pages/Auth/VerifyEmail';
 import Vehicles from './pages/Vehicles';
 import VehicleDetails from './pages/VehicleDetails';
-import Contact from './pages/Contact'; // Import this
-import Reviews from './pages/Reviews'; // Import this
+import Contact from './pages/Contact';
+import Reviews from './pages/Reviews';
 import Locations from './pages/Locations';
+import UserDashboard from './pages/UserDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import { ProtectedRoute } from './components/routing/ProtectedRoute';
 
 // Create query client
 const queryClient = new QueryClient({
@@ -27,19 +30,11 @@ const queryClient = new QueryClient({
     },
 });
 
-// Protected Route Component
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-    const { isAuthenticated } = useAuthStore();
-    return isAuthenticated ? <>{children}</> : <Navigate to="/auth/login" replace />;
-};
-
-// --- UPDATED LAYOUT WRAPPER ---
-// This now wraps EVERYTHING in the Navbar and Footer
+// Layout wrapper
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <Navbar />
-            {/* Added pt-16 to push content down because Navbar is fixed */}
             <div className="min-h-screen">{children}</div>
             <Footer />
         </>
@@ -65,21 +60,28 @@ function App() {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/reviews" element={<Reviews />} />
                         <Route path="/locations" element={<Locations />} />
-                        
-                        {/* Auth Routes - Now they will have Navbar/Footer automatically */}
+
+                        {/* Auth Routes */}
                         <Route path="/auth/login" element={<Login />} />
                         <Route path="/auth/register" element={<Register />} />
                         <Route path="/auth/verify-email" element={<VerifyEmail />} />
 
-                        {/* Protected Routes */}
+                        {/* User Dashboard */}
                         <Route
                             path="/dashboard"
                             element={
                                 <ProtectedRoute>
-                                    <div className="container-custom py-20 pt-24">
-                                        <h1 className="text-4xl font-bold gradient-text">Dashboard Coming Soon!</h1>
-                                        <p className="mt-4 text-gray-600">Stay tuned for amazing features...</p>
-                                    </div>
+                                    <UserDashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+
+                        {/* Admin Dashboard */}
+                        <Route
+                            path="/admin/dashboard"
+                            element={
+                                <ProtectedRoute requireAdmin>
+                                    <AdminDashboard />
                                 </ProtectedRoute>
                             }
                         />

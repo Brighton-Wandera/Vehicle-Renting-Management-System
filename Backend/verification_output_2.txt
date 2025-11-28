@@ -1,0 +1,7 @@
+[dotenv@17.2.3] injecting env (8) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+Connecting to database...
+Initializing new Database Connection Pool...
+Successfully connected to MSSQL DB
+Connected.
+Checking user: alfiejay881@gmail.com
+❌ User NOT found in database!

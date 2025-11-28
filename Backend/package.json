@@ -25,6 +25,8 @@
     "@types/mssql": "^9.1.8",
     "@types/node": "^20.11.17",
     "@types/nodemailer": "^7.0.4",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }

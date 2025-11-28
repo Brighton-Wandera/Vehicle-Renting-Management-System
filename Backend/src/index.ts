@@ -15,6 +15,7 @@ import { vehicleRouter } from './vehicles/vehicles.routes.js';
 import { paymentsRouter } from './payments/payments.routes.js';
 import { bookingsRouter } from './bookings/bookings.routes.js';
 import { ticketsRouter } from './tickets/tickets.routes.js';
+import { dashboardRouter } from './dashboard/dashboard.routes.js';
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ app.route('/api/vehicles', vehicleRouter);
 app.route('/api/bookings', bookingsRouter);
 app.route('/api/payments', paymentsRouter);
 app.route('/api/tickets', ticketsRouter);
+app.route('/api/dashboard', dashboardRouter);
 
 
 // --- 404 Handler ---
@@ -74,7 +76,7 @@ const port = Number(process.env.PORT) || 3000;
 initDatabaseConnection()
   .then(() => {
     console.log('Database connection established.');
-    
+
     serve({
       fetch: app.fetch,
       port: port

@@ -7,9 +7,9 @@ import * as authService from './auth.service.js';
 export const registerUser = async (c: Context) => {
   try {
     const user = c.get('validatedData'); // Get data from validator
-    
+
     const result = await authService.registerUserService(user);
-    
+
     if (!result) {
       return c.json({ error: 'Email already exists' }, 409);
     }
@@ -61,4 +61,26 @@ export const loginUser = async (c: Context) => {
   } catch (error: any) {
     return c.json({ error: error.message }, 500);
   }
+};
+
+// --- MOCK IMPLEMENTATIONS FOR MISSING AUTH FLOWS ---
+
+export const verifyEmail = async (c: Context) => {
+  // Mock implementation
+  return c.json({ message: 'Email verified successfully' }, 200);
+};
+
+export const resendOtp = async (c: Context) => {
+  // Mock implementation
+  return c.json({ message: 'OTP resent successfully' }, 200);
+};
+
+export const forgotPassword = async (c: Context) => {
+  // Mock implementation
+  return c.json({ message: 'Password reset link sent' }, 200);
+};
+
+export const resetPassword = async (c: Context) => {
+  // Mock implementation
+  return c.json({ message: 'Password reset successfully' }, 200);
 };
