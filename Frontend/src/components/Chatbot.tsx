@@ -213,7 +213,7 @@ const Chatbot: React.FC = () => {
                                     <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold">VeloRent Assistant</h3>
+                                    <h3 className="font-semibold"><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-500">VeloRent</span> Assistant</h3>
                                     <p className="text-xs opacity-90">Online 24/7</p>
                                 </div>
                             </div>

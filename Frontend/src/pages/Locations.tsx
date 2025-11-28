@@ -42,10 +42,10 @@ const Locations: React.FC = () => {
 
             <div className="container-custom relative z-10">
                 {/* Header */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-16"
+                    className="text-center mb-16 mt-20"
                 >
                     <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
                         Find Us Near You
@@ -67,10 +67,10 @@ const Locations: React.FC = () => {
                         >
                             {/* Card Image */}
                             <div className="h-48 overflow-hidden relative">
-                                <img 
-                                    src={location.image} 
+                                <img
+                                    src={location.image}
                                     alt={location.name}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                 <div className="absolute bottom-4 left-4">
@@ -127,9 +127,9 @@ const Locations: React.FC = () => {
                                 </div>
 
                                 <div className="pt-4 mt-4 border-t border-white/10">
-                                    <Button 
-                                        variant="secondary" 
-                                        fullWidth 
+                                    <Button
+                                        variant="secondary"
+                                        fullWidth
                                         className="bg-white/10 text-white hover:bg-white hover:text-black border-none"
                                         leftIcon={<Navigation className="w-4 h-4" />}
                                     >

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, Phone, MapPin, Hash, Gift, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, User, Phone, MapPin, Hash, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button, Input } from '../../components/ui';
 import { useAuthStore } from '../../store/authStore';
@@ -76,20 +76,19 @@ const Register: React.FC = () => {
             >
                 {/* Dark Glass Container */}
                 <div className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl shadow-2xl p-8">
-                    
+
                     {/* Header */}
                     <div className="text-center mb-8">
                         <h1 className="text-3xl font-heading font-bold text-white mb-2">Create Account</h1>
-                        <p className="text-gray-300 font-light">Join VeloRent exclusive club</p>
+                        <p className="text-gray-300 font-light">Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-500 font-semibold">VeloRent</span> exclusive club</p>
                     </div>
 
                     {/* Progress Steps */}
                     <div className="flex items-center justify-between mb-8 px-2">
                         {[1, 2, 3].map((s) => (
                             <div key={s} className="flex flex-col items-center">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                                    s <= step ? 'bg-white text-black' : 'bg-white/10 text-white/50 border border-white/20'
-                                }`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${s <= step ? 'bg-white text-black' : 'bg-white/10 text-white/50 border border-white/20'
+                                    }`}>
                                     {s}
                                 </div>
                             </div>
@@ -103,14 +102,14 @@ const Register: React.FC = () => {
                         {step === 1 && (
                             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Input label="First Name" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} 
+                                    <Input label="First Name" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<User className="w-4 h-4" />} />
                                     <Input label="Last Name" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" />
                                 </div>
                                 <Input label="Email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<Mail className="w-4 h-4" />} />
-                                
+
                                 <Button type="button" onClick={handleNext} fullWidth className="bg-white text-black mt-4 hover:bg-gray-200">
                                     Next Step <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
@@ -124,7 +123,7 @@ const Register: React.FC = () => {
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<Lock className="w-4 h-4" />} />
                                 <Input label="Confirm Password" type="password" value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<Lock className="w-4 h-4" />} />
-                                
+
                                 <div className="flex gap-3 mt-6">
                                     <Button type="button" onClick={handleBack} className="flex-1 bg-transparent border border-white/20 text-white hover:bg-white/10">Back</Button>
                                     <Button type="button" onClick={handleNext} className="flex-1 bg-white text-black hover:bg-gray-200">Next</Button>
@@ -141,7 +140,7 @@ const Register: React.FC = () => {
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<Hash className="w-4 h-4" />} />
                                 <Input label="Address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500" leftIcon={<MapPin className="w-4 h-4" />} />
-                                
+
                                 <div className="flex gap-3 mt-6">
                                     <Button type="button" onClick={handleBack} className="flex-1 bg-transparent border border-white/20 text-white hover:bg-white/10">Back</Button>
                                     <Button type="submit" isLoading={isLoading} className="flex-1 bg-white text-black hover:bg-gray-200">Create Account</Button>

@@ -48,7 +48,7 @@ const VehicleDetails: React.FC = () => {
         return (
             <>
                 <Navbar />
-                <div className="min-h-screen pt-16 flex items-center justify-center bg-[#0a0a0a]">
+                <div className="min-h-screen pt-24 flex items-center justify-center bg-black/50">
                     <div className="text-center">
                         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-yellow-400 mx-auto mb-4" />
                         <p className="text-gray-400">Loading vehicle details...</p>
@@ -63,7 +63,7 @@ const VehicleDetails: React.FC = () => {
         return (
             <>
                 <Navbar />
-                <div className="min-h-screen pt-16 flex items-center justify-center bg-[#0a0a0a]">
+                <div className="min-h-screen pt-24 flex items-center justify-center bg-black/50">
                     <div className="text-center">
                         <h2 className="text-2xl font-bold text-white mb-2">
                             Vehicle Not Found
@@ -88,15 +88,15 @@ const VehicleDetails: React.FC = () => {
     return (
         <>
             {/* <Navbar /> */}
-            <div className="min-h-screen pt-16 bg-[#0a0a0a] text-white relative overflow-hidden">
+            <div className="min-h-screen pt-16 bg-black/50 text-white relative overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop"
                         alt="Background"
-                        className="w-full h-full object-cover opacity-40"
+                        className="w-full h-full object-cover opacity-50"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0a0a0a]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
                 </div>
 
                 {/* Content with higher z-index */}

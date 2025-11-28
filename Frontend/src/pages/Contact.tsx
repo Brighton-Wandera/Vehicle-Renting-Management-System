@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send,} from 'lucide-react';
+import { Mail, Phone, MapPin, Send, } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button, Input } from '../components/ui';
 import toast from 'react-hot-toast';
@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
 
         // Simulate network request
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        
+
         toast.success('Message sent! We will contact you shortly.');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setIsSubmitting(false);
@@ -35,11 +35,10 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="container-custom relative z-10">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-12"
-                >
+                    className="text-center mb-12 mt-16">
                     <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
                         Get in Touch
                     </h1>
@@ -52,12 +51,11 @@ const Contact: React.FC = () => {
                     {/* Left: Contact Info Cards */}
                     <div className="space-y-6">
                         {/* Info Card 1 */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4"
-                        >
+                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4">
                             <div className="p-3 bg-white/10 rounded-full text-primary-400">
                                 <Phone className="w-6 h-6 text-white" />
                             </div>
@@ -71,12 +69,11 @@ const Contact: React.FC = () => {
                         </motion.div>
 
                         {/* Info Card 2 */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4"
-                        >
+                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4">
                             <div className="p-3 bg-white/10 rounded-full text-primary-400">
                                 <Mail className="w-6 h-6 text-white" />
                             </div>
@@ -90,12 +87,11 @@ const Contact: React.FC = () => {
                         </motion.div>
 
                         {/* Info Card 3 */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4"
-                        >
+                            className="backdrop-blur-xl bg-black/40 border border-white/10 p-6 rounded-2xl shadow-lg flex items-start gap-4">
                             <div className="p-3 bg-white/10 rounded-full text-primary-400">
                                 <MapPin className="w-6 h-6 text-white" />
                             </div>
@@ -110,36 +106,35 @@ const Contact: React.FC = () => {
                     </div>
 
                     {/* Right: Form */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl shadow-2xl p-8"
-                    >
+                        className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl shadow-2xl p-8">
                         <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid md:grid-cols-2 gap-6">
-                                <Input 
-                                    label="Your Name" 
+                                <Input
+                                    label="Your Name"
                                     value={formData.name}
-                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     required
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500"
                                 />
-                                <Input 
-                                    label="Email Address" 
+                                <Input
+                                    label="Email Address"
                                     type="email"
                                     value={formData.email}
-                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     required
                                     className="bg-white/5 border-white/10 text-white placeholder:text-gray-500"
                                 />
                             </div>
-                            
-                            <Input 
-                                label="Subject" 
+
+                            <Input
+                                label="Subject"
                                 value={formData.subject}
-                                onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                 required
                                 className="bg-white/5 border-white/10 text-white placeholder:text-gray-500"
                             />
@@ -151,18 +146,17 @@ const Contact: React.FC = () => {
                                     className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all resize-none"
                                     placeholder="Tell us about your requirements..."
                                     value={formData.message}
-                                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     required
                                 />
                             </div>
 
-                            <Button 
-                                type="submit" 
-                                size="lg" 
+                            <Button
+                                type="submit"
+                                size="lg"
                                 isLoading={isSubmitting}
                                 className="w-full bg-white text-black hover:bg-gray-200 font-bold"
-                                rightIcon={<Send className="w-4 h-4" />}
-                            >
+                                rightIcon={<Send className="w-4 h-4" />}>
                                 Send Message
                             </Button>
                         </form>

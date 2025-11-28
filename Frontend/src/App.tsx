@@ -16,9 +16,6 @@ import VehicleDetails from './pages/VehicleDetails';
 import Contact from './pages/Contact';
 import Reviews from './pages/Reviews';
 import Locations from './pages/Locations';
-import UserDashboard from './pages/UserDashboard';
-import AdminDashboard from './pages/AdminDashboard';
-import { ProtectedRoute } from './components/routing/ProtectedRoute';
 
 // Create query client
 const queryClient = new QueryClient({
@@ -29,6 +26,12 @@ const queryClient = new QueryClient({
         },
     },
 });
+
+// Protected Route Component
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+    const { isAuthenticated } = useAuthStore();
+    return isAuthenticated ? <>{children}</> : <Navigate to="/auth/login" replace />;
+};
 
 // Layout wrapper
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
@@ -50,7 +53,13 @@ function App() {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
+            {/* THIS IS THE FIX BELOW: ADD THE FUTURE PROP */}
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <AppLayout>
                     <Routes>
                         {/* Public Routes */}
@@ -66,22 +75,15 @@ function App() {
                         <Route path="/auth/register" element={<Register />} />
                         <Route path="/auth/verify-email" element={<VerifyEmail />} />
 
-                        {/* User Dashboard */}
+                        {/* Protected Routes */}
                         <Route
                             path="/dashboard"
                             element={
                                 <ProtectedRoute>
-                                    <UserDashboard />
-                                </ProtectedRoute>
-                            }
-                        />
-
-                        {/* Admin Dashboard */}
-                        <Route
-                            path="/admin/dashboard"
-                            element={
-                                <ProtectedRoute requireAdmin>
-                                    <AdminDashboard />
+                                    <div className="container-custom py-20 pt-24">
+                                        <h1 className="text-4xl font-bold gradient-text">Dashboard Coming Soon!</h1>
+                                        <p className="mt-4 text-gray-600">Stay tuned for amazing features...</p>
+                                    </div>
                                 </ProtectedRoute>
                             }
                         />

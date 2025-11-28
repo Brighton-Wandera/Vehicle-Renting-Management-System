@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <Link to="/" className="flex items-center space-x-2 group">
-                        <span className={`text-2xl font-bold tracking-tighter ${scrolled ? 'text-foreground' : 'text-white'}`}>
+                        <span className="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-500">
                             VeloRent
                         </span>
                     </Link>

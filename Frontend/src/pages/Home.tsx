@@ -33,9 +33,9 @@ const Home: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-white">
-            
+
             {/* --- HERO SECTION --- */}
-            <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden pt-20">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImage} alt="Luxury Car" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#0a0a0a]" />
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
             {/* --- FEATURES SECTION --- */}
             <section className="py-32 relative bg-[#0a0a0a] overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/10 blur-[120px] rounded-full pointer-events-none" />
-                
+
                 <div className="container-custom relative z-10">
                     <motion.div
                         className="text-center mb-20"
@@ -154,7 +154,7 @@ const Home: React.FC = () => {
             {/* --- FEATURED COLLECTION (NEW) --- */}
             <section className="py-24 bg-black/50 border-t border-white/5 relative overflow-hidden">
                 <div className="container-custom relative z-10">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -181,10 +181,10 @@ const Home: React.FC = () => {
                             >
                                 {/* Image */}
                                 <div className="relative h-64 overflow-hidden">
-                                    <img 
-                                        src={car.image} 
-                                        alt={car.name} 
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                    <img
+                                        src={car.image}
+                                        alt={car.name}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80" />
                                     <div className="absolute bottom-4 left-4">
@@ -208,7 +208,7 @@ const Home: React.FC = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-center justify-between border-t border-white/10 pt-4">
                                         <div>
                                             <span className="text-2xl font-bold text-white">${car.price}</span>
@@ -224,7 +224,7 @@ const Home: React.FC = () => {
                             </motion.div>
                         ))}
                     </div>
-                    
+
                     <div className="mt-8 text-center md:hidden">
                         <Link to="/vehicles" className="inline-flex items-center text-yellow-400 hover:text-yellow-300">
                             View Full Fleet <ArrowRight className="w-4 h-4 ml-2" />
@@ -237,22 +237,32 @@ const Home: React.FC = () => {
             <section className="py-32 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-                
+
                 <div className="container-custom text-center relative z-10">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-6xl font-heading font-bold mb-6"
+                    >
+                        Ready to Hit the Road?
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light"
+                    >
+                        Book your dream vehicle today and embark on an unforgettable journey.
+                    </motion.p>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-heading font-bold mb-8 tracking-tight">
-                            Ready to Hit the Road?
-                        </h2>
-                        <p className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto text-gray-400 font-light">
-                            Join thousands of satisfied customers who trust VeloRent for their vehicle rental needs.
-                        </p>
-                        <Link to="/auth/register">
-                            <button className="px-12 py-5 bg-white text-black text-lg font-bold rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-2xl">
-                                Create Your Account
+                        <Link to="/vehicles">
+                            <button className="px-10 py-4 text-lg font-bold rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black hover:from-yellow-300 hover:to-yellow-500 transition-all shadow-2xl shadow-yellow-500/30 hover:scale-105">
+                                Explore Our Fleet
                             </button>
                         </Link>
                     </motion.div>

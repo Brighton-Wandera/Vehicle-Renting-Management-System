@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, SlidersHorizontal} from 'lucide-react';
+import { Search, Filter, SlidersHorizontal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllVehicles } from '../api/vehicles.api';
 import { Vehicle } from '../types';
 import { VehicleCard } from '../components/vehicles';
 import toast from 'react-hot-toast';
-import heroImage from '../assets/hero.png'; // Import the background
+import heroImage from '../assets/hero.png';
 
 const Vehicles: React.FC = () => {
     const [vehicles, setVehicles] = useState<Vehicle[]>([]);
     const [filteredVehicles, setFilteredVehicles] = useState<Vehicle[]>([]);
     const [loading, setLoading] = useState(true);
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-    
+
     // Filter States
     const [searchQuery, setSearchQuery] = useState('');
     const [transmissionFilter, setTransmissionFilter] = useState<string>('all');
@@ -36,7 +36,6 @@ const Vehicles: React.FC = () => {
         } catch (error) {
             console.error(error);
             toast.error('Failed to load vehicles');
-            // If backend fails, we could load dummy data here for UI testing if you want
         } finally {
             setLoading(false);
         }
@@ -89,12 +88,12 @@ const Vehicles: React.FC = () => {
             </div>
 
             <div className="container-custom relative z-10">
-                
+
                 {/* Header & Search */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
+                    className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 mt-20"
                 >
                     <div>
                         <h1 className="text-4xl font-heading font-bold text-white mb-2">Our Premium Fleet</h1>
@@ -112,7 +111,7 @@ const Vehicles: React.FC = () => {
                                 className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all"
                             />
                         </div>
-                        <button 
+                        <button
                             onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
                             className="lg:hidden p-3 rounded-xl bg-white/5 border border-white/10 text-white"
                         >
@@ -129,7 +128,7 @@ const Vehicles: React.FC = () => {
                                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
                                     <Filter className="w-4 h-4" /> Filters
                                 </h3>
-                                <button 
+                                <button
                                     onClick={clearFilters}
                                     className="text-xs text-primary-300 hover:text-primary-200 font-medium"
                                 >
@@ -139,7 +138,7 @@ const Vehicles: React.FC = () => {
 
                             <div className="space-y-6">
                                 {/* Filter Groups */}
-                                <FilterGroup 
+                                <FilterGroup
                                     label="Transmission"
                                     value={transmissionFilter}
                                     onChange={setTransmissionFilter}
@@ -149,7 +148,7 @@ const Vehicles: React.FC = () => {
                                         { value: 'manual', label: 'Manual' }
                                     ]}
                                 />
-                                <FilterGroup 
+                                <FilterGroup
                                     label="Fuel Type"
                                     value={fuelFilter}
                                     onChange={setFuelFilter}
@@ -161,7 +160,7 @@ const Vehicles: React.FC = () => {
                                         { value: 'electric', label: 'Electric' }
                                     ]}
                                 />
-                                <FilterGroup 
+                                <FilterGroup
                                     label="Availability"
                                     value={availabilityFilter}
                                     onChange={setAvailabilityFilter}
@@ -178,15 +177,14 @@ const Vehicles: React.FC = () => {
                     {/* Mobile Filters Drawer */}
                     <AnimatePresence>
                         {isMobileFiltersOpen && (
-                            <motion.div 
+                            <motion.div
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 className="lg:hidden overflow-hidden bg-white/5 rounded-xl border border-white/10 mb-6"
                             >
                                 <div className="p-4 space-y-4">
-                                    <FilterGroup label="Transmission" value={transmissionFilter} onChange={setTransmissionFilter} options={[{value:'all', label:'All'}, {value:'automatic', label:'Automatic'}, {value:'manual', label:'Manual'}]} />
-                                    {/* Add other mobile filters here similarly */}
+                                    <FilterGroup label="Transmission" value={transmissionFilter} onChange={setTransmissionFilter} options={[{ value: 'all', label: 'All' }, { value: 'automatic', label: 'Automatic' }, { value: 'manual', label: 'Manual' }]} />
                                     <button onClick={clearFilters} className="w-full py-2 text-sm text-center text-primary-300">Reset Filters</button>
                                 </div>
                             </motion.div>
@@ -212,7 +210,7 @@ const Vehicles: React.FC = () => {
                                 <Search className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                                 <h3 className="text-xl font-bold text-white mb-2">No vehicles found</h3>
                                 <p className="text-gray-400">Try adjusting your filters or search terms.</p>
-                                <button 
+                                <button
                                     onClick={clearFilters}
                                     className="mt-6 px-6 py-2 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
                                 >
@@ -252,5 +250,5 @@ const FilterGroup = ({ label, value, onChange, options }: any) => (
         </div>
     </div>
 );
-
+export const getVehicles = getAllVehicles;
 export default Vehicles;

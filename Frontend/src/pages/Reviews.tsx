@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Quote,} from 'lucide-react';
+import { Star, Quote, } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '../assets/hero.png';
 
@@ -72,15 +72,15 @@ const Reviews: React.FC = () => {
 
             <div className="container-custom relative z-10">
                 {/* Header Stats */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-16"
+                    className="text-center mb-16 mt-20"
                 >
                     <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
                         Client Testimonials
                     </h1>
-                    
+
                     <div className="inline-flex items-center gap-6 backdrop-blur-md bg-white/10 border border-white/20 px-8 py-4 rounded-full">
                         <div className="text-center">
                             <div className="text-3xl font-bold text-white">4.9</div>
@@ -116,9 +116,9 @@ const Reviews: React.FC = () => {
                             {/* Stars */}
                             <div className="flex gap-1 mb-4">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star 
-                                        key={i} 
-                                        className={`w-4 h-4 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-600 text-gray-600'}`} 
+                                    <Star
+                                        key={i}
+                                        className={`w-4 h-4 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-600 text-gray-600'}`}
                                     />
                                 ))}
                             </div>
